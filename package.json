@@ -1,0 +1,26 @@
+{
+  "name": "clicker",
+  "version": "1.0.0",
+  "description": "First #react-newbie project",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hacklag/hacklag-clicker-game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hacklag/hacklag-clicker-game/issues"
+  },
+  "homepage": "https://github.com/hacklag/hacklag-clicker-game#readme",
+  "dependencies": {
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-svg-use": "^1.0.1",
+    "webpack": "^1.13.1"
+  },
+  "devDependencies": {}
+}
