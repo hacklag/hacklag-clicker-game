@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/hacklag/hacklag-clicker-game.git"
   },
-  "author": "",
+  "author": "Dragon",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/hacklag/hacklag-clicker-game/issues"
@@ -19,7 +19,6 @@
   "dependencies": {
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
-    "react-svg-use": "^1.0.1",
     "webpack": "^1.13.1"
   },
   "devDependencies": {}
