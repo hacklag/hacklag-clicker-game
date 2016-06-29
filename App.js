@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Radium from 'radium';
-//import DialogExampleSimple from './dialog.js';
+import ResetDialog from './dialog.js';
 //import Shop from './shop.js';
 
 class App extends React.Component{
@@ -54,10 +54,7 @@ class App extends React.Component{
   }
 
   reset() {
-
-    this.setState({
-      val: 0
-    });
+    this.handleOpen;
   }
 
   render(){
@@ -72,7 +69,7 @@ class App extends React.Component{
           {this.state.val}
         </div>
         <div>
-          <button onClick={this.reset}>Reset</button>
+          <button onClick={this.handleOpen}>Reset</button>
         </div>
         <div >
           <img

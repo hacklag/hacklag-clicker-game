@@ -10,16 +10,26 @@ import App from './App';
  *
  * You can also close this dialog by clicking outside the dialog, or with the 'Esc' key.
  */
-export default class DialogExampleSimple extends React.Component {
-  state = {
-    open: false,
-  };
+class ResetDialog extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+      open: false
+    };
+    this.handleOpen = this.handleOpen.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+  }
+  /*state = {
+    open: false
+  };*/
 
-  handleOpen = () => {
+  handleOpen() {
+    console.log("yay");
     this.setState({open: true});
   };
 
-  handleClose = () => {
+  handleClose() {
+    console.log("nooo")
     this.setState({open: false});
   };
 
@@ -34,17 +44,17 @@ export default class DialogExampleSimple extends React.Component {
         label="Reset"
         primary={true}
         keyboardFocused={true}
-        onTouchTap={this.handleClose}
+        onTouchTap={this.reset}
       />,
     ];
 
     return (
       <div>
-        <RaisedButton label="Dialog" onTouchTap={this.handleOpen} />
+        //<RaisedButton label="Dialog" onTouchTap={this.handleOpen} />
         <Dialog
           title="RESET!"
           actions={actions}
-          modal={false}
+          modal={true}
           open={this.state.open}
           onRequestClose={this.handleClose}
         >
@@ -54,3 +64,4 @@ export default class DialogExampleSimple extends React.Component {
     );
   }
 }
+export default ResetDialog
