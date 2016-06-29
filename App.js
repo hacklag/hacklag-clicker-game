@@ -1,15 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Radium from 'radium';
+//import DialogExampleSimple from './dialog.js';
+//import Shop from './shop.js';
 
 class App extends React.Component{
   constructor(){
     super();
-    this.state = { 
+    this.state = {
       val: 0,
-      timeOffset: 500
+      timeOffset: 1000
     };
     this.update = this.update.bind(this);
+    this.reset = this.reset.bind(this);
   }
   getStyles() {
     return {
@@ -39,6 +42,7 @@ class App extends React.Component{
     this.setState({
       val: this.state.val + 1
     })
+    document.title = `${this.state.val} Hackbats`;
   }
 
   componentWillMount(){
@@ -47,6 +51,13 @@ class App extends React.Component{
 
   componentWillUnmount(){
     clearInterval(this.timer);
+  }
+
+  reset() {
+
+    this.setState({
+      val: 0
+    });
   }
 
   render(){
@@ -59,6 +70,9 @@ class App extends React.Component{
             style={smallbat}
             src='/Icons/hackbat.png' />
           {this.state.val}
+        </div>
+        <div>
+          <button onClick={this.reset}>Reset</button>
         </div>
         <div >
           <img
@@ -73,6 +87,6 @@ class App extends React.Component{
   componentDidMount(){
     this.timer = setInterval(this.update, this.state.timeOffset);
   }
-}
 
+}
 export default Radium(App);
