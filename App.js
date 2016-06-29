@@ -2,10 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Radium from 'radium';
 
-class App extends React.Component {
+class App extends React.Component{
   constructor(){
     super();
-    this.state = { val: 0};
+    this.state = { 
+      val: 0,
+      timeOffset: 500
+    };
     this.update = this.update.bind(this);
   }
   getStyles() {
@@ -17,52 +20,59 @@ class App extends React.Component {
       hackbatlogo: {
         display: 'block',
         margin: 'auto',
-        width: 321,
+        width: 322,
         border: '1px solid'
       },
       counter: {
         justifyContent: 'flex-start',
-        width: 100,
+        width: 108,
         border: '1px solid',
       },
       smallbat: {
-        //marginTop: 6,
-        width: 30,
+        width: 32,
         height: 'auto',
         border: '0.5px solid'
       }
-  }
-
+    }
   }
   update(){
-    this.setState({val: this.state.val + 1})
+    this.setState({
+      val: this.state.val + 1
+    })
   }
+
   componentWillMount(){
     console.log('mounting')
   }
+
+  componentWillUnmount(){
+    clearInterval(this.timer);
+  }
+
   render(){
-    const styles = this.getStyles();
+    const {mainDiv, counter, smallbat, hackbatlogo} = this.getStyles();
 
     return(
-      <div style={styles.mainDiv}>
-        <div style={styles.counter} >
+      <div style={mainDiv}>
+        <div style={counter} >
           <img
-            style={styles.smallbat}
+            style={smallbat}
             src='/Icons/hackbat.png' />
           {this.state.val}
         </div>
         <div >
           <img
-            style={styles.hackbatlogo}
+            style={hackbatlogo}
             onClick={this.update}
             src='/Icons/hackbat.png' />
         </div>
       </div>
     );
   }
+
   componentDidMount(){
-    console.log('mounted')
+    this.timer = setInterval(this.update, this.state.timeOffset);
   }
 }
 
-export default App
+export default Radium(App);
