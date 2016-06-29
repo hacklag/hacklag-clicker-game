@@ -18,11 +18,9 @@ node_modules
 
 # Users Environment Variables
 .lock-wscript
-<<<<<<< HEAD
 README.md
 LICENSE
-=======
->>>>>>> bbbf6db7ae2abae064af99eef6f947968d6385b6
+
 
 dist/
 .idea/
@@ -31,8 +29,4 @@ dist/
 
 # Reports by nightwatchjs
 reports/
-<<<<<<< HEAD
 bin/
-=======
-bin/
->>>>>>> bbbf6db7ae2abae064af99eef6f947968d6385b6
