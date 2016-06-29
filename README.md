@@ -1,9 +1,15 @@
 # hacklag-clicker-game
 First #react-newbie project
 
-<<<<<<< HEAD
-### Dragonowy branch.
-### Nie ruszać pod groźbą śmierci w męczarniach C:
-=======
-### Tak
->>>>>>> ec8734c9a92bcefa3c4e7a322d9305f265142d23
+### Startup
+After download, simply start by:
+~~~~
+npm install
+~~~~
+then:
+~~~~
+npm start
+~~~~
+
+Website will be hosted at:
+http://localhost:8080/
