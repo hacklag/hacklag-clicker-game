@@ -1,4 +1,15 @@
 # hacklag-clicker-game
 First #react-newbie project
 
-#### Ouh It will be my first Pull Reqest
+### Startup
+After download, simply start by:
+~~~~
+npm install
+~~~~
+then:
+~~~~
+npm start
+~~~~
+
+Website will be hosted at:
+http://localhost:8080/

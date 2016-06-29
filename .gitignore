@@ -1,0 +1,32 @@
+public/
+
+# Build
+build/
+
+# Logs
+logs
+*.log
+
+# Coverage directory used by tools like istanbul
+coverage
+
+# Compiled binary addons (http://nodejs.org/api/addons.html)
+build/Release
+
+# Dependency directory
+node_modules
+
+# Users Environment Variables
+.lock-wscript
+README.md
+LICENSE
+
+
+dist/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Reports by nightwatchjs
+reports/
+bin/
