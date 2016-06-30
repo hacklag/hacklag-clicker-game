@@ -13,7 +13,7 @@ class App extends React.Component{
       timeOffset: 1000
     };
     this.update = this.update.bind(this);
-    this.reset = this.reset.bind(this);
+    App.reset = this.reset.bind(this);
   }
 
   getStyles() {
@@ -56,13 +56,11 @@ class App extends React.Component{
   }
 
   reset() {
-    console.log('yaaay')
+    //console.debug("woop");
     this.setState({
       val: 0
     });
-    this.setState({
-      open: false
-    });
+    ResetDialog.handleClose();
   }
 
   render(){
@@ -78,7 +76,7 @@ class App extends React.Component{
         </div>
         <div>
           <ResetDialog />
-          <button onClick={this.handleOpen}>Reset</button>
+          <button onClick={ResetDialog.handleOpen}>Reset</button>
         </div>
         <div >
           <img
@@ -96,4 +94,3 @@ class App extends React.Component{
 
 }
 export default Radium(App);
-ReactDOM.render(<App />, document.getElementById('app'))

@@ -22,15 +22,16 @@ class ResetDialog extends React.Component {
     this.state = {
       open: false
     };
-    this.handleOpen = this.handleOpen.bind(this);
-    this.handleClose = this.handleClose.bind(this);
+    ResetDialog.handleOpen = this.handleOpen.bind(this);
+    //this.handleClose = this.handleClose.bind(this);
+    ResetDialog.handleClose = this.handleClose.bind(this);
   }
   /*state = {
     open: false
   };*/
 
   handleOpen() {
-    console.log("yay");
+    //console.log("yay");
     this.setState({
       open: true
     });
@@ -40,20 +41,21 @@ class ResetDialog extends React.Component {
     this.setState({
       open: false
     });
+    //console.debug("close")
   };
 
   render() {
     const actiones = [
       <FlatButton
         label="Cancel"
-        primary={true}
-        onTouchTap={this.handleClose}
+        primary={false}
+        onClick={ResetDialog.handleClose}
       />,
       <FlatButton
         label="Reset"
         primary={true}
         keyboardFocused={true}
-        onTouchTap={this.reset}
+        onClick={App.reset}
       />,
     ];
 
