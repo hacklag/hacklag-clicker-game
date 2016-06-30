@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "description": "First #react-newbie project",
   "main": "index.js",
-  "scripts": {
-    "start": "webpack-dev-server --hot --inline",
-    "prod": "webpack"
+  "scripts" : {
+    "start" : "webpack && webpack-dev-server --hot --inline"
   },
   "repository": {
     "type": "git",
