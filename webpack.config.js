@@ -1,26 +1,30 @@
 module.exports = {
-  target: 'web',
+  context: __dirname + "/src",
   entry: {
-    app: './main.js',
+    javascript: "./app.js",
+    html: "./assets/index.html",
   },
+
   output: {
-    path: './',
-    filename: 'index.js'
+    filename: "app.js",
+    path: __dirname + "/dist",
   },
-  devServer: {
-    inline: true,
-    port: 8080
-  },
+
   module: {
     loaders: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel',
-        query: {
-          presets: ['es2015', 'react']
-        }
+        loaders: ['react-hot', 'babel?presets[]=es2015,presets[]=react']
+      },
+      {
+        test: /\.html$/,
+        loader: "file?name=[name].[ext]",
+      },
+      {
+        test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
+        loader: "file"
       }
-    ]
-  }
+    ],
+  },
 }

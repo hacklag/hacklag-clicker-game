@@ -1,9 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Radium from 'radium';
-import ResetDialog from './apps/dialog.js';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-//import Shop from './shop.js';
 
 class App extends React.Component{
   constructor(){
@@ -13,9 +10,8 @@ class App extends React.Component{
       timeOffset: 1000
     };
     this.update = this.update.bind(this);
-    App.reset = this.reset.bind(this);
+    this.reset = this.reset.bind(this);
   }
-
   getStyles() {
     return {
       mainDiv: {
@@ -56,11 +52,7 @@ class App extends React.Component{
   }
 
   reset() {
-    //console.debug("woop");
-    this.setState({
-      val: 0
-    });
-    ResetDialog.handleClose();
+    this.handleOpen;
   }
 
   render(){
@@ -71,18 +63,17 @@ class App extends React.Component{
         <div style={counter} >
           <img
             style={smallbat}
-            src='./src/assets/Icons/hackbat.png' />
+            src={require('../assets/Icons/hackbat.png')} />
           {this.state.val}
         </div>
         <div>
-          <ResetDialog />
-          <button onClick={ResetDialog.handleOpen}>Reset</button>
+          <button onClick={this.handleOpen}>Reset</button>
         </div>
         <div >
           <img
             style={hackbatlogo}
             onClick={this.update}
-            src='./src/assets/Icons/hackbat.png' />
+            src={require('../assets/Icons/hackbat.png')} />
         </div>
       </div>
     );
