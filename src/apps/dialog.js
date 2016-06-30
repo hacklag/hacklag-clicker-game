@@ -20,7 +20,7 @@ class ResetDialog extends React.Component {
   constructor(){
     super();
     this.state = {
-      open: true
+      open: false
     };
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
