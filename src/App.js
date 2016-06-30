@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Radium from 'radium';
-import ResetDialog from './dialog.js';
+import ResetDialog from './apps/dialog.js';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 //import Shop from './shop.js';
 
 class App extends React.Component{
@@ -14,6 +15,7 @@ class App extends React.Component{
     this.update = this.update.bind(this);
     this.reset = this.reset.bind(this);
   }
+
   getStyles() {
     return {
       mainDiv: {
@@ -54,7 +56,13 @@ class App extends React.Component{
   }
 
   reset() {
-    this.handleOpen;
+    console.log('yaaay')
+    this.setState({
+      val: 0
+    });
+    this.setState({
+      open: false
+    });
   }
 
   render(){
@@ -65,17 +73,18 @@ class App extends React.Component{
         <div style={counter} >
           <img
             style={smallbat}
-            src='/Icons/hackbat.png' />
+            src='./src/assets/Icons/hackbat.png' />
           {this.state.val}
         </div>
         <div>
+          <ResetDialog />
           <button onClick={this.handleOpen}>Reset</button>
         </div>
         <div >
           <img
             style={hackbatlogo}
             onClick={this.update}
-            src='/Icons/hackbat.png' />
+            src='./src/assets/Icons/hackbat.png' />
         </div>
       </div>
     );
@@ -87,3 +96,4 @@ class App extends React.Component{
 
 }
 export default Radium(App);
+ReactDOM.render(<App />, document.getElementById('app'))

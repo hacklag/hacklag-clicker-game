@@ -2,7 +2,10 @@ import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
-import App from './App';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import App from '/home/dragon/Clicker/src/App';
 
 /**
  * Dialog with action buttons. The actions are passed in as an array of React objects,
@@ -11,10 +14,13 @@ import App from './App';
  * You can also close this dialog by clicking outside the dialog, or with the 'Esc' key.
  */
 class ResetDialog extends React.Component {
+  getChildContext() {
+    return { muiTheme: getMuiTheme(baseTheme) };
+  }
   constructor(){
     super();
     this.state = {
-      open: false
+      open: true
     };
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -25,16 +31,19 @@ class ResetDialog extends React.Component {
 
   handleOpen() {
     console.log("yay");
-    this.setState({open: true});
+    this.setState({
+      open: true
+    });
   };
 
   handleClose() {
-    console.log("nooo")
-    this.setState({open: false});
+    this.setState({
+      open: false
+    });
   };
 
   render() {
-    const actions = [
+    const actiones = [
       <FlatButton
         label="Cancel"
         primary={true}
@@ -50,10 +59,9 @@ class ResetDialog extends React.Component {
 
     return (
       <div>
-        //<RaisedButton label="Dialog" onTouchTap={this.handleOpen} />
         <Dialog
           title="RESET!"
-          actions={actions}
+          actions={actiones}
           modal={true}
           open={this.state.open}
           onRequestClose={this.handleClose}
@@ -64,4 +72,8 @@ class ResetDialog extends React.Component {
     );
   }
 }
+
+ResetDialog.childContextTypes = {
+  muiTheme: React.PropTypes.object.isRequired,
+};
 export default ResetDialog
