@@ -1,9 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Radium from 'radium';
 
-class App extends React.Component{
-  constructor(){
+class App extends React.Component {
+  constructor() {
     super();
     this.state = {
       val: 0,
@@ -12,11 +11,24 @@ class App extends React.Component{
     this.update = this.update.bind(this);
     this.reset = this.reset.bind(this);
   }
+
+  componentWillMount() {
+    console.log('mounting');
+  }
+
+  componentDidMount() {
+    this.timer = setInterval(this.update, this.state.timeOffset);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
+
   getStyles() {
     return {
       mainDiv: {
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'column'
       },
       hackbatlogo: {
         display: 'block',
@@ -27,38 +39,31 @@ class App extends React.Component{
       counter: {
         justifyContent: 'flex-start',
         width: 108,
-        border: '1px solid',
+        border: '1px solid'
       },
       smallbat: {
         width: 32,
         height: 'auto',
         border: '0.5px solid'
       }
-    }
+    };
   }
-  update(){
+
+  update() {
     this.setState({
       val: this.state.val + 1
-    })
+    });
     document.title = `${this.state.val} Hackbats`;
   }
 
-  componentWillMount(){
-    console.log('mounting')
-  }
-
-  componentWillUnmount(){
-    clearInterval(this.timer);
-  }
-
   reset() {
-    this.handleOpen;
+    this.handleOpen();
   }
 
-  render(){
+  render() {
     const {mainDiv, counter, smallbat, hackbatlogo} = this.getStyles();
 
-    return(
+    return (
       <div style={mainDiv}>
         <div style={counter} >
           <img
@@ -78,10 +83,5 @@ class App extends React.Component{
       </div>
     );
   }
-
-  componentDidMount(){
-    this.timer = setInterval(this.update, this.state.timeOffset);
-  }
-
 }
 export default Radium(App);
