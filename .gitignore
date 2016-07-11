@@ -21,7 +21,7 @@ node_modules
 README.md
 LICENSE
 
-
+src/apps/synlog/
 dist/
 .idea/
 *.sublime-project
