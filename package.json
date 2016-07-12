@@ -17,6 +17,7 @@
   "homepage": "https://github.com/hacklag/hacklag-clicker-game#readme",
   "dependencies": {
     "material-ui": "^0.15.1",
+    "numeral": "^1.5.3",
     "radium": "^0.17.1",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",

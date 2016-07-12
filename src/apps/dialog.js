@@ -1,8 +1,6 @@
 import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import App from './App';
@@ -14,10 +12,7 @@ import App from './App';
  * You can also close this dialog by clicking outside the dialog, or with the 'Esc' key.
  */
 class ResetDialog extends React.Component {
-  getChildContext() {
-    return { muiTheme: getMuiTheme(baseTheme) };
-  }
-  constructor(){
+  constructor() {
     super();
     this.state = {
       open: false
@@ -26,19 +21,25 @@ class ResetDialog extends React.Component {
     ResetDialog.handleClose = this.handleClose.bind(this);
   }
 
+  getChildContext() {
+    return {
+      muiTheme: getMuiTheme(baseTheme)
+    };
+  }
+
   handleOpen() {
     //console.log("yay");
     this.setState({
       open: true
     });
-  };
+  }
 
   handleClose() {
     this.setState({
       open: false
     });
     //console.debug("close")
-  };
+  }
 
   render() {
     const actiones = [
@@ -52,7 +53,7 @@ class ResetDialog extends React.Component {
         primary={true}
         keyboardFocused={true}
         onClick={App.reset}
-      />,
+      />
     ];
 
     return (
@@ -72,6 +73,6 @@ class ResetDialog extends React.Component {
 }
 
 ResetDialog.childContextTypes = {
-  muiTheme: React.PropTypes.object.isRequired,
+  muiTheme: React.PropTypes.object.isRequired
 };
-export default ResetDialog
+export default ResetDialog;
