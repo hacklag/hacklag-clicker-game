@@ -5,7 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import App from '/home/dragon/Clicker/src/App';
+import App from './App';
 
 /**
  * Dialog with action buttons. The actions are passed in as an array of React objects,
@@ -23,12 +23,8 @@ class ResetDialog extends React.Component {
       open: false
     };
     ResetDialog.handleOpen = this.handleOpen.bind(this);
-    //this.handleClose = this.handleClose.bind(this);
     ResetDialog.handleClose = this.handleClose.bind(this);
   }
-  /*state = {
-    open: false
-  };*/
 
   handleOpen() {
     //console.log("yay");
