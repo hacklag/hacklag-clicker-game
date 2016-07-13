@@ -1,8 +1,6 @@
 import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import App from './App';
 
 /**
@@ -21,12 +19,6 @@ class ResetDialog extends React.Component {
     ResetDialog.handleClose = this.handleClose.bind(this);
   }
 
-  getChildContext() {
-    return {
-      muiTheme: getMuiTheme(baseTheme)
-    };
-  }
-
   handleOpen() {
     this.setState({
       open: true
@@ -40,17 +32,17 @@ class ResetDialog extends React.Component {
   }
 
   render() {
-    const actiones = [
+    const actions = [
       <FlatButton
         label="Cancel"
         primary={false}
-        onClick={ResetDialog.handleClose}
+        onTouchTap={ResetDialog.handleClose}
       />,
       <FlatButton
         label="Reset"
         primary={true}
         keyboardFocused={true}
-        onClick={App.reset}
+        onTouchTap={App.reset}
       />
     ];
 
@@ -58,11 +50,10 @@ class ResetDialog extends React.Component {
       <div>
         <Dialog
           title="RESET!"
-          actions={actiones}
+          actions={actions}
           modal={true}
           open={this.state.open}
-          onRequestClose={this.handleClose}
-        >
+          onRequestClose={ResetDialog.handleClose} >
           Are you sure you want to reset your progress?
         </Dialog>
       </div>
@@ -70,7 +61,4 @@ class ResetDialog extends React.Component {
   }
 }
 
-ResetDialog.childContextTypes = {
-  muiTheme: React.PropTypes.object.isRequired
-};
 export default ResetDialog;
