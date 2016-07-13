@@ -28,7 +28,6 @@ class ResetDialog extends React.Component {
   }
 
   handleOpen() {
-    //console.log("yay");
     this.setState({
       open: true
     });
@@ -38,7 +37,6 @@ class ResetDialog extends React.Component {
     this.setState({
       open: false
     });
-    //console.debug("close")
   }
 
   render() {

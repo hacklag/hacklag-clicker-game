@@ -2,9 +2,7 @@ import React from 'react';
 import Radium from 'radium';
 import ResetDialog from './dialog.js';
 import Numeral from 'numeral';
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-//import Shop from './shop.js';
+import Shop from './shop.js';
 
 class App extends React.Component {
   constructor() {
@@ -28,11 +26,6 @@ class App extends React.Component {
   componentWillUnmount() {
     clearInterval(this.timer);
   }
-  getChildContext() {
-    return {
-      muiTheme: getMuiTheme(baseTheme)
-    };
-  }
 
   getStyles() {
     return {
@@ -41,14 +34,11 @@ class App extends React.Component {
         flexDirection: 'column',
         fontFamily: 'Roboto'
       },
-      hackbatdiv: {
-        border: '1px solid',
-        margin: '100px auto'
-      },
       hackbatlogo: {
         display: 'block',
         width: 240,
-        cursor: 'pointer'
+        cursor: 'pointer',
+        margin: '100px auto'
       },
       counter: {
         position: 'absolute',
@@ -128,8 +118,8 @@ class App extends React.Component {
   }
 
   render() {
-    const {button, shopbat, mainDiv, counter, smallbat, hackbatlogo,
-      leftpanel, shop, shoprow, hackbatdiv, shopicon, shophead} = this.getStyles();
+    const {button, mainDiv, counter, smallbat, hackbatlogo,
+      leftpanel, shop, shopbat, shophead, shopicon, shoprow} = this.getStyles();
 
     return (
       <div style={mainDiv}>
@@ -147,101 +137,16 @@ class App extends React.Component {
           <br/>
           <div id="version">running v.0.1</div>
         </div>
-        <div style={hackbatdiv}>
+        <div>
           <img
             style={hackbatlogo}
             onClick={this.update}
             src={require('../assets/Icons/hackbat.png')} />
         </div>
-        <div style={shop}>
-          <div style={shoprow}>
-            <div>
-              <img
-                style={shopicon}
-                src={require('../assets/Icons/cursor.svg')} />
-            </div>
-            <div style={shophead}>
-              Cursor - <img style={shopbat} src={require('../assets/Icons/hackbat.png')} />
-            </div>
-          </div>
-          <div style={shoprow}>
-            <div>
-              <img
-                style={shopicon}
-                src={require('../assets/Icons/cursor.svg')} />
-            </div>
-            <div style={shophead}>
-              Cave
-            </div>
-          </div>
-          <div style={shoprow}>
-            <div>
-              <img
-                style={shopicon}
-                src={require('../assets/Icons/cursor.svg')} />
-            </div>
-            <div style={shophead}>
-              3
-            </div>
-          </div>
-          <div style={shoprow}>
-            <div>
-              <img
-                style={shopicon}
-                src={require('../assets/Icons/cursor.svg')} />
-            </div>
-            <div style={shophead}>
-              4
-            </div>
-          </div>
-          <div style={shoprow}>
-            <div>
-              <img
-                style={shopicon}
-                src={require('../assets/Icons/cursor.svg')} />
-            </div>
-            <div style={shophead}>
-              5
-            </div>
-          </div>
-          <div style={shoprow}>
-            <div>
-              <img
-                style={shopicon}
-                src={require('../assets/Icons/cursor.svg')} />
-            </div>
-            <div style={shophead}>
-              6
-            </div>
-          </div>
-          <div style={shoprow}>
-            <div>
-              <img
-                style={shopicon}
-                src={require('../assets/Icons/cursor.svg')} />
-            </div>
-            <div style={shophead}>
-              7
-            </div>
-          </div>
-          <div style={shoprow}>
-            <div>
-              <img
-                style={shopicon}
-                src={require('../assets/Icons/cursor.svg')} />
-            </div>
-            <div style={shophead}>
-              8
-            </div>
-          </div>
-        </div>
+        <Shop styles={this.getStyles()} />
       </div>
     );
   }
-
 }
-App.childContextTypes = {
-  muiTheme: React.PropTypes.object.isRequired
-};
 
 export default Radium(App);
