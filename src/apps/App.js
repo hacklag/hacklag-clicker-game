@@ -67,9 +67,9 @@ export default class App extends React.Component {
         borderRadius: '8px',
         lineHeight: '125%',
         zIndex: '100',
+        fontSize: '12px',
         fontWeight: 'bold'
       },
-      fontSize: '12px',
       button: {
         textDecoration: 'underline',
         cursor: 'pointer',
