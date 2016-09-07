@@ -4,19 +4,23 @@ import Numeral from 'numeral';
 import Shop from './shop.js';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import cookie from 'react-cookie';
 
-class App extends React.Component {
+export default class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      val: 0,
-      timeOffset: 1000
+      hackbatval: 0,
+      timeOffset: 1000,
+      addval: 1
     };
     this.update = this.update.bind(this);
     App.reset = this.reset.bind(this);
   }
 
   componentWillMount() {
+    this.setState({hackbatval: 0});
+    this.setState({hackbatval: cookie.load('hackbatval')});
   }
 
   componentDidMount() {
@@ -63,9 +67,9 @@ class App extends React.Component {
         borderRadius: '8px',
         lineHeight: '125%',
         zIndex: '100',
-        fontSize: '12px',
         fontWeight: 'bold'
       },
+      fontSize: '12px',
       button: {
         textDecoration: 'underline',
         cursor: 'pointer',
@@ -76,16 +80,25 @@ class App extends React.Component {
 
   reset() {
     this.setState({
-      val: 0
+      hackbatval: 0
     });
     ResetDialog.handleClose();
+    cookie.remove('hackbatval', {path: '/'});
   }
 
   update() {
     this.setState({
-      val: this.state.val + 1
+      hackbatval: this.state.hackbatval + this.state.addval
     });
-    document.title = `${Numeral(this.state.val).format('0,0')} Hackbats - Hackbat Clicker`;
+    document.title = `${Numeral(this.state.hackbatval).format('0,0')} Hackbats - Hackbat Clicker`;
+  }
+
+  load() {
+    this.setState({hackbatval: cookie.load('hackbatval')});
+  }
+
+  save() {
+    cookie.save('hackbatval', this.state.hackbatval, {path: '/'});
   }
 
   render() {
@@ -94,27 +107,28 @@ class App extends React.Component {
     return (
       <MuiThemeProvider muitheme={getMuiTheme()}>
         <div style={mainDiv}>
-          <div style={counter}>
-            <img
+          <div style={counter} id="counter">
+          <img
               style={smallbat}
               src={require('../assets/Icons/hackbat.png')} />
-            {Numeral(this.state.val).format('0,0')}
+            {Numeral(this.state.hackbatval).format('0,0')}
           </div>
-          <div style={leftpanel}>
+          <div style={leftpanel} id="leftpanel">
             <ResetDialog />
             <div style={button} onTouchTap={ResetDialog.handleOpen}>Reset</div>
+            <div style={button} onClick={this.load.bind(this)}>Load</div>
+            <div style={button} onClick={this.save.bind(this)}>Save</div>
           </div>
-          <div>
+          <div id="hackbat">
             <img
               style={hackbatlogo}
               onClick={this.update}
               src={require('../assets/Icons/hackbat.png')} />
           </div>
           <Shop styles={this.getStyles()} />
+          <div id="Saved">Saved!</div>
         </div>
       </MuiThemeProvider>
     );
   }
 }
-
-export default App;

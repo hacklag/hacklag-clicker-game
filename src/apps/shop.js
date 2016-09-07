@@ -1,39 +1,53 @@
 import React from 'react';
 
 class Shop extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      cursorcount: 0
+    };
+    this.cursor = this.cursor.bind(this);
+  }
   getStyles() {
     return {
       shop: {
         border: '0.5px solid',
         position: 'absolute',
         right: 0,
+        top: 0,
         height: 536,
-        width: 320,
-        top: 0
+        width: 320
       },
       shoprow: {
-        height: 64,
+        height: 65,
         width: 'auto',
-        right: 0,
         borderBottom: '1px solid',
         borderTop: '2px solid',
-        backgroundColor: '#eee'
+        backgroundColor: '#eee',
+        cursor: 'pointer'
       },
       shopicon: {
         width: '60px',
-        position: 'absolute',
         borderRight: '1px solid'
       },
       shophead: {
         fontWeight: 'bold',
         marginLeft: '64px',
-        marginTop: '1px'
+        marginTop: '-64px'
       },
       shopbat: {
         width: '20px'
       }
     };
   }
+
+  cursor() {
+    this.setState({
+      cursorcount: this.state.cursorcount + 1,
+      addval: this.state.addval + 0.2 * this.state.cursorcount
+    });
+  }
+
   render() {
     const {shop, shoprow, shopicon, shopbat, shophead} = this.getStyles();
 
@@ -56,7 +70,7 @@ class Shop extends React.Component {
               src={require('../assets/Icons/cursor.svg')} />
           </div>
           <div style={shophead}>
-            Cave
+            Cave - <img style={shopbat} src={require('../assets/Icons/hackbat.png')} />
           </div>
         </div>
         <div style={shoprow}>
@@ -66,7 +80,7 @@ class Shop extends React.Component {
               src={require('../assets/Icons/cursor.svg')} />
           </div>
           <div style={shophead}>
-            3
+            3 - <img style={shopbat} src={require('../assets/Icons/hackbat.png')} />
           </div>
         </div>
         <div style={shoprow}>
@@ -76,7 +90,7 @@ class Shop extends React.Component {
               src={require('../assets/Icons/cursor.svg')} />
           </div>
           <div style={shophead}>
-            4
+            4 - <img style={shopbat} src={require('../assets/Icons/hackbat.png')} />
           </div>
         </div>
         <div style={shoprow}>
@@ -86,7 +100,7 @@ class Shop extends React.Component {
               src={require('../assets/Icons/cursor.svg')} />
           </div>
           <div style={shophead}>
-            5
+            5 - <img style={shopbat} src={require('../assets/Icons/hackbat.png')} />
           </div>
         </div>
         <div style={shoprow}>
@@ -96,7 +110,7 @@ class Shop extends React.Component {
               src={require('../assets/Icons/cursor.svg')} />
           </div>
           <div style={shophead}>
-            6
+            6 - <img style={shopbat} src={require('../assets/Icons/hackbat.png')} />
           </div>
         </div>
         <div style={shoprow}>
@@ -106,7 +120,7 @@ class Shop extends React.Component {
               src={require('../assets/Icons/cursor.svg')} />
           </div>
           <div style={shophead}>
-            7
+            7 - <img style={shopbat} src={require('../assets/Icons/hackbat.png')} />
           </div>
         </div>
         <div style={shoprow}>
@@ -116,7 +130,7 @@ class Shop extends React.Component {
               src={require('../assets/Icons/cursor.svg')} />
           </div>
           <div style={shophead}>
-            8
+            8 - <img style={shopbat} src={require('../assets/Icons/hackbat.png')} />
           </div>
         </div>
       </div>
