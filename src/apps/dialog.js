@@ -1,10 +1,6 @@
 import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import App from './App';
 
 /**
@@ -14,10 +10,7 @@ import App from './App';
  * You can also close this dialog by clicking outside the dialog, or with the 'Esc' key.
  */
 class ResetDialog extends React.Component {
-  getChildContext() {
-    return { muiTheme: getMuiTheme(baseTheme) };
-  }
-  constructor(){
+  constructor() {
     super();
     this.state = {
       open: false
@@ -27,43 +20,40 @@ class ResetDialog extends React.Component {
   }
 
   handleOpen() {
-    //console.log("yay");
     this.setState({
       open: true
     });
-  };
+  }
 
   handleClose() {
     this.setState({
       open: false
     });
-    //console.debug("close")
-  };
+  }
 
   render() {
-    const actiones = [
+    const actions = [
       <FlatButton
         label="Cancel"
         primary={false}
-        onClick={ResetDialog.handleClose}
+        onTouchTap={ResetDialog.handleClose}
       />,
       <FlatButton
         label="Reset"
         primary={true}
         keyboardFocused={true}
-        onClick={App.reset}
-      />,
+        onTouchTap={App.reset}
+      />
     ];
 
     return (
       <div>
         <Dialog
           title="RESET!"
-          actions={actiones}
+          actions={actions}
           modal={true}
           open={this.state.open}
-          onRequestClose={this.handleClose}
-        >
+          onRequestClose={ResetDialog.handleClose} >
           Are you sure you want to reset your progress?
         </Dialog>
       </div>
@@ -71,7 +61,4 @@ class ResetDialog extends React.Component {
   }
 }
 
-ResetDialog.childContextTypes = {
-  muiTheme: React.PropTypes.object.isRequired,
-};
-export default ResetDialog
+export default ResetDialog;

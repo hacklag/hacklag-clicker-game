@@ -22,6 +22,7 @@ README.md
 LICENSE
 
 src/apps/synlog/
+src/apps/shop2.js
 dist/
 .idea/
 *.sublime-project

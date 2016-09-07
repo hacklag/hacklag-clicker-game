@@ -13,3 +13,10 @@ npm start
 
 Website will be hosted at:
 http://localhost:8080/
+
+For Atom linter and linter-eslint:
+~~~
+cd ~/.atom/packages/linter-eslint/
+npm install eslint-plugin-react
+npm install babel-eslint
+~~~
